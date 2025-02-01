@@ -1,0 +1,7 @@
+/home/du335/cuda-assignment-1-dst1998/CMakeFiles/lab1.dir
+/home/du335/cuda-assignment-1-dst1998/CMakeFiles/edit_cache.dir
+/home/du335/cuda-assignment-1-dst1998/CMakeFiles/rebuild_cache.dir
+/home/du335/cuda-assignment-1-dst1998/src/CMakeFiles/cudaLib.dir
+/home/du335/cuda-assignment-1-dst1998/src/CMakeFiles/cpuLib.dir
+/home/du335/cuda-assignment-1-dst1998/src/CMakeFiles/edit_cache.dir
+/home/du335/cuda-assignment-1-dst1998/src/CMakeFiles/rebuild_cache.dir
