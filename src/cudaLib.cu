@@ -49,9 +49,10 @@ int runGpuSaxpy(int vectorSize) {
     gpuAssert(cudaMemcpy( device_x, host_x.data(), size, cudaMemcpyHostToDevice), __FILE__, __LINE__);
     gpuAssert(cudaMemcpy( device_y, host_result.data(), size, cudaMemcpyHostToDevice), __FILE__, __LINE__);
 
-    // Kernel setup - to have the device to perform actual vector multi-add
+    // Configure CUDA kernel launch parameters - to have the device to perform actual vector multi-add
     int threadsPerBlock = 256;
     int blocksPerGrid = (vectorSize + threadsPerBlock - 1) / threadsPerBlock;
+	// Launch SAXPY kernel
     saxpy_gpu<<<blocksPerGrid, threadsPerBlock>>>(device_x, device_y, scale, vectorSize);
     gpuAssert(cudaDeviceSynchronize(), __FILE__, __LINE__);
 
@@ -97,17 +98,6 @@ void generatePoints (uint64_t * pSums, uint64_t pSumSize, uint64_t sampleSize) {
 }
 
 __global__ 
-// void reduceCounts (uint64_t * pSums, uint64_t * totals, uint64_t pSumSize, uint64_t reduceSize) {
-// 	//	Insert code here
-// 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
-
-//     if(idx >= reduceSize) return;
-//     uint64_t sum = 0;
-//     for (uint64_t i = idx * pSumSize; i < (idx+1) * pSumSize; i++) {
-//         sum += pSums[i];
-//     }
-//     totals[idx] = sum;
-// }
 void reduceCounts (uint64_t * pSums, uint64_t * totals, uint64_t pSumSize, uint64_t reduceSize) {
 	//	Insert code here
 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
