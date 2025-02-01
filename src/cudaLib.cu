@@ -27,7 +27,8 @@ int runGpuSaxpy(int vectorSize) {
 	// std::cout << "Write code, you must\n";
 
 	size_t size = vectorSize * sizeof(float);
-    float *device_x, *device_y, scale = 2.0f;
+    float *device_x, *device_y; 
+    float scale = 2.0f;
 
     // Initialize host
     std::vector<float> host_x(vectorSize);
@@ -86,7 +87,6 @@ void generatePoints (uint64_t * pSums, uint64_t pSumSize, uint64_t sampleSize) {
     uint64_t hit_count = 0;
     curandState_t rng;
     curand_init(clock64(), idx, 0, &rng);
-    // int randInt = curand_uniform(&rng);
     for(int i = 0; i < sampleSize; i++){
         float x = curand_uniform(&rng);
         float y = curand_uniform(&rng);
